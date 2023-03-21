@@ -1,2 +1,2 @@
-# PT-Notification
+# pt-notification
 Patient Notification
