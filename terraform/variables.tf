@@ -25,3 +25,7 @@ variable "required_approving_review_count" {
   description = "1"
   
 }
+
+variable "foo" {
+  
+}
