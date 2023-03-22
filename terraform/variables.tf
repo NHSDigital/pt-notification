@@ -12,7 +12,7 @@ variable "license_template" {
 
 variable "github_token" {
   type    = string
-  default = ""
+  default = " "
 }
 
 variable "github_owner" {
