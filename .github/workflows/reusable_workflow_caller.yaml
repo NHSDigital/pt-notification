@@ -1,4 +1,4 @@
-name: Invoke Branch Tests
+name: Reusable Workflow
 
 on:
   pull_request:
@@ -10,16 +10,15 @@ on:
   workflow_dispatch:
     inputs:
       tflint:
-        description: 'Run TFLint against your branch?'
+        description: "Run TFLint against your branch?"
         type: choice
         options:
-        - 'yes'
-        - 'no'
-        default: 'yes'
+          - "yes"
+          - "no"
+        default: "yes"
         required: true
 
 jobs:
-
   call-tflint-workflow:
-    if: ${{ inputs.tflint }} == 'yes'
+    if: ${{ inputs.tflint == 'yes' }}
     uses: ./.github/workflows/tflint_workflow.yaml
