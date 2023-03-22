@@ -16,8 +16,8 @@ provider "github" {
 
 
 resource "github_repository" "repository" {
-  name        = "pt-notification"
-  description = "patient notification"
+  name        = var.repository_name
+  description = "a fanciful repository"
 
   visibility = var.visibilty
 
@@ -27,14 +27,9 @@ resource "github_repository" "repository" {
   license_template       = var.license_template
 }
 
-resource "github_branch" "default_branch" {
-  repository = github_repository.repository.name
-  branch     = var.default_branch
-}
-
 resource "github_branch_default" "default_branch" {
   repository = github_repository.repository.name
-  branch     = github_branch.default_branch.branch
+  branch     = var.default_branch
 }
 
 resource "github_branch_protection" "protect_default_branch" {
@@ -43,9 +38,7 @@ resource "github_branch_protection" "protect_default_branch" {
   enforce_admins          = true
   allows_deletions        = false
   required_linear_history = true
-  allow_force_pushes      = false
-  allow_deletions         = false
-
+  allows_force_pushes     = false
 
   required_pull_request_reviews {
     required_approving_review_count = var.required_approving_review_count

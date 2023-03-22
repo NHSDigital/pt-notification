@@ -11,18 +11,18 @@ variable "license_template" {
 }
 
 variable "github_token" {
-  type        = string
-  description = ""
+  type    = string
+  default = ""
 }
 
 variable "github_owner" {
-  type        = string
-  description = "NHSDigital"
+  type    = string
+  default = "NHSDigital"
 }
 
 variable "required_approving_review_count" {
-  type        = string
-  description = "1"
+  type    = number
+  default = 1
 
 }
 
@@ -31,6 +31,7 @@ variable "visibilty" {
   default = "internal"
 }
 
-variable "foo" {
-
+variable "repository_name" {
+  type    = string
+  default = "tf-gh-repo-test"
 }
