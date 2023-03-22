@@ -21,11 +21,16 @@ variable "github_owner" {
 }
 
 variable "required_approving_review_count" {
-  type = string
+  type        = string
   description = "1"
-  
+
+}
+
+variable "visibilty" {
+  type    = string
+  default = "internal"
 }
 
 variable "foo" {
-  
+
 }

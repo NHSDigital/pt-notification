@@ -19,7 +19,7 @@ resource "github_repository" "repository" {
   name        = "pt-notification"
   description = "patient notification"
 
-  visibility = "internal"
+  visibility = var.visibilty
 
   has_wiki               = true
   delete_branch_on_merge = true
@@ -32,16 +32,16 @@ resource "github_branch" "default_branch" {
   branch     = var.default_branch
 }
 
-resource "github_branch_default" "default_branch"{
+resource "github_branch_default" "default_branch" {
   repository = github_repository.repository.name
   branch     = github_branch.default_branch.branch
 }
 
 resource "github_branch_protection" "protect_default_branch" {
-  repository_id = github_repository.repository.node_id
-  pattern       = github_branch_default.default_branch.branch
-  enforce_admins   = true
-  allows_deletions = false
+  repository_id           = github_repository.repository.node_id
+  pattern                 = github_branch_default.default_branch.branch
+  enforce_admins          = true
+  allows_deletions        = false
   required_linear_history = true
   allow_force_pushes      = false
   allow_deletions         = false
