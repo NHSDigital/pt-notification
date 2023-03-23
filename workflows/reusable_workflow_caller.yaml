@@ -1,0 +1,60 @@
+name: Reusable Workflow
+
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      tflint:
+        description: "Run TFLint against your branch?"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+        default: "yes"
+        required: true
+      tfsec:
+        description: "Run tfsec against your branch?"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+        default: "yes"
+        required: true
+      checkov:
+        description: "Run checkov against your branch?"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+        default: "yes"
+        required: true
+      terraform:
+        description: "Run terraform against your branch?"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+        default: "yes"
+        required: true
+
+jobs:
+  call-tflint-workflow:
+    if: ${{ inputs.tflint == 'yes' }}
+    uses: ./.github/workflows/tflint.yaml
+
+  call-tfsec-workflow:
+    if: ${{ inputs.tfsec == 'yes' }}
+    uses: ./.github/workflows/tfsec.yaml
+
+  call-checkov-workflow:
+    if: ${{ inputs.checkov == 'yes' }}
+    uses: ./.github/workflows/checkov.yaml
+
+  call-terraform-workflow:
+    if: ${{ inputs.terraform == 'yes' }}
+    uses: ./.github/workflows/terraform.yaml
