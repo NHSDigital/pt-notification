@@ -1,5 +1,3 @@
-
-# Define input variables
 variable "default_branch" {
   type    = string
   default = "main"
