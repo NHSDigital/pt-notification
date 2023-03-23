@@ -10,7 +10,7 @@ variable "license_template" {
 
 variable "github_token" {
   type    = string
-  default = "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"
+  default = ""
 }
 
 variable "github_owner" {
