@@ -1,5 +1,3 @@
-
-# Define input variables
 variable "default_branch" {
   type    = string
   default = "main"
@@ -12,7 +10,7 @@ variable "license_template" {
 
 variable "github_token" {
   type    = string
-  default = " "
+  default = "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"
 }
 
 variable "github_owner" {

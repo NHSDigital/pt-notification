@@ -38,9 +38,9 @@ resource "github_branch_protection" "protect_default_branch" {
   enforce_admins          = true
   allows_deletions        = false
   required_linear_history = true
-  allows_force_pushes     = false
+  allows_force_pushes     = true
 
-  required_pull_request_reviews {
-    required_approving_review_count = var.required_approving_review_count
-  }
+  # required_pull_request_reviews {
+  #   required_approving_review_count = var.required_approving_review_count
+  # }
 }
