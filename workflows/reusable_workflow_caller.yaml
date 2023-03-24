@@ -23,7 +23,7 @@ on:
         options:
           - "yes"
           - "no"
-        default: "yes"
+        default: "no"
         required: true
       checkov:
         description: "Run checkov against your branch?"
@@ -31,7 +31,7 @@ on:
         options:
           - "yes"
           - "no"
-        default: "yes"
+        default: "no"
         required: true
       terraform:
         description: "Run terraform against your branch?"
@@ -39,7 +39,7 @@ on:
         options:
           - "yes"
           - "no"
-        default: "yes"
+        default: "no"
         required: true
 
 jobs:
