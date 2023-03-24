@@ -1,0 +1,19 @@
+name: Create Repo From Issue
+
+on:
+  issues:
+    types: [opened]
+# what are the guardrails to ensure that the bot does not interact with existing repositores?
+
+jobs:
+  call-tflint-workflow:
+    permissions:
+      contents: read
+      issues: read
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: view issue information
+        run: |
+          echo "Issue title: ${{ github.event.issue.title }}"
+          echo "Issue body: ${{ github.event.issue.body }}"
