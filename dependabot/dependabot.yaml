@@ -3,5 +3,7 @@ updates:
   - package-ecosystem: "terraform"
     directory: "/terraform"
     schedule:
-      interval: "weekly"
+      interval: "daily"
+      # Check for npm updates at 9am UTC
+      time: "22:45"
     open-pull-requests-limit: 3
