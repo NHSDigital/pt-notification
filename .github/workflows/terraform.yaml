@@ -50,6 +50,6 @@ jobs:
         working-directory: terraform
 
       - name: Terraform Apply No Input
-        if: github.event.inputs.branch_name == ''
+        if: github.event.inputs.branch_name != ''
         run: terraform apply -auto-approve -input=false -var repository_name="${{ inputs.branch_name }}"
         working-directory: terraform
