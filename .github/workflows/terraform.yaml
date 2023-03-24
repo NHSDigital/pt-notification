@@ -2,6 +2,11 @@ name: terraform
 
 on:
   workflow_call:
+    inputs:
+      branch_name:
+        required: true
+        type: string
+        default: ""
 
 jobs:
   terraform:
@@ -40,6 +45,12 @@ jobs:
         run: terraform plan -no-color -input=false
         working-directory: terraform
 
-      - name: Terraform Apply
+      - name: Terraform Apply No Input
+        if: ${{ inputs.branch_name == "" }}
         run: terraform apply -auto-approve -input=false
+        working-directory: terraform
+
+      - name: Terraform Apply No Input
+        if: ${{ inputs.branch_name != "" }}
+        run: terraform apply -auto-approve -input=false -var repository_name="${{ inputs.branch_name }}"
         working-directory: terraform
