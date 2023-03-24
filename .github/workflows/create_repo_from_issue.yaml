@@ -20,3 +20,5 @@ jobs:
 
   create-repo-from-name:
     uses: ./.github/workflows/terraform.yaml
+    with:
+      branch_name: ${{ github.event.issue.title }}

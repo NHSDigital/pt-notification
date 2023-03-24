@@ -21,7 +21,6 @@ variable "github_owner" {
 variable "required_approving_review_count" {
   type    = number
   default = 1
-
 }
 
 variable "visibilty" {
