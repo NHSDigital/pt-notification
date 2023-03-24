@@ -6,7 +6,7 @@ on:
 # what are the guardrails to ensure that the bot does not interact with existing repositores?
 
 jobs:
-  call-tflint-workflow:
+  get-title-and-body-of-issue:
     permissions:
       contents: read
       issues: read
@@ -17,3 +17,6 @@ jobs:
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
           echo "Issue body: ${{ github.event.issue.body }}"
+
+  create-repo-from-name:
+    uses: ./.github/workflows/terraform.yaml
