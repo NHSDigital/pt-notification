@@ -4,9 +4,12 @@ terraform {
       source  = "integrations/github"
       version = "~> 5.0"
     }
+    http = {
+      source  = "hashicorp/http"
+      version = "~> 3.2.1"
+    }
   }
 }
-
 
 provider "github" {
   token = var.github_token
@@ -14,10 +17,8 @@ provider "github" {
   owner = var.github_owner
 }
 
-
 resource "github_repository" "repository" {
-  name        = var.repository_name
-  description = "a fanciful repository"
+  name = var.repository_name
 
   visibility = var.visibilty
 
@@ -38,6 +39,7 @@ resource "github_branch_protection" "protect_default_branch" {
   # and before pull request reviews are enforced
   # all generated files should be here
   depends_on = [
+    github_repository_file.readme,
     github_repository_file.reusable_workflow_caller,
     github_repository_file.tflint,
     github_repository_file.tfsec,
